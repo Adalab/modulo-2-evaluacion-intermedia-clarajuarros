@@ -11,6 +11,7 @@ let resetButton;
 function getRandomNumber(max) {
     return Math.ceil(Math.random() * max);
 }
+const randomNumber = generateRandomNumber(100);
 
 function verificar(){
     var numero =Number.value;
@@ -24,16 +25,16 @@ if (numeroRespuestas === 1){
 guesses.numeroRespuestas += numeroRespuestas + " ";
 
 if (Number === getRandomNumber){
-    pista = "Has ganado campeona!!"
+    pista.innerHTML = "Has ganado campeona!!"
     setGameOver()
 }
 if (Number < getRandomNumber){
-    pista = "demasiado bajo";
+    pista.innerHTML = "demasiado bajo";
 }
 if (Number > getRandomNumber){
-    pista = "demasiado alto";
+    pista.innerHTML = "demasiado alto";
 }
 if (Number > 100){
-    pista = "El número debe estar entre 1 y 100"
+    pista.innerHTML = "El número debe estar entre 1 y 100"
 }
 }
