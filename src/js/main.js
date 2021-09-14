@@ -1,40 +1,53 @@
 'use strict';
+const number = document.querySelector('.js_number');
+const submit = document.querySelector('.js_submit');
+const clue = document.querySelector('.js_clue');
+const tries = document.querySelector('.js_try');
+let counter = 0;
 
- const Number = document.querySelector(".numero");
-const btnPrueba = document.querySelector(".btnPrueba");
-const pista = document.querySelector(".pista");
-const numeroRespuestas = document.querySelector(".numeroRespuestas");
-
-let guessCount = 1;
-let resetButton;
 
 function getRandomNumber(max) {
-    return Math.ceil(Math.random() * max);
+  return Math.ceil(Math.random() * max);
 }
-const randomNumber = generateRandomNumber(100);
+let randomNumber = getRandomNumber(100);
 
-function verificar(){
-    var numero =Number.value;
+
+function validNumber(number) {
+  let varReturn;
+
+  if (!isNaN(number)) {
+    if (number > 0 && number <= 100) {
+      if (number > randomNumber) {
+        varReturn = 'Demasiado alto.';
+      } else if (number < randomNumber) {
+        varReturn = 'Demasiado bajo.';
+      } else if (number === randomNumber) {
+        varReturn = '¡Has ganado!';
+      }
+    } else if (number <= 0 || number >= 100) {
+      varReturn = 'El número debe estar entre 1 y 100.';
+    }
+  } else {
+    varReturn = 'Ingresa un número';
+  }
+
+  return varReturn;
 }
 
-function checkGuess (){
-    let userGuess = Number(Number.value);
-if (numeroRespuestas === 1){
-    guesses.numeroRespuestas = "Intentos anteriores: ";
+function writeClue(something) {
+  return clue.innerHTML = something;
 }
-guesses.numeroRespuestas += numeroRespuestas + " ";
 
-if (Number === getRandomNumber){
-    pista.innerHTML = "Has ganado campeona!!"
-    setGameOver()
+function writeTry(counter) {
+  return tries.innerHTML = counter;
 }
-if (Number < getRandomNumber){
-    pista.innerHTML = "demasiado bajo";
+
+function game(event) {
+  let inputValue = parseInt(number.value);
+  let clue = validNumber(inputValue);
+  writeClue(clue);
+  writeTry(counter++);
+  event.preventDefault();
 }
-if (Number > getRandomNumber){
-    pista.innerHTML = "demasiado alto";
-}
-if (Number > 100){
-    pista.innerHTML = "El número debe estar entre 1 y 100"
-}
-}
+
+submit.addEventListener('click', game);

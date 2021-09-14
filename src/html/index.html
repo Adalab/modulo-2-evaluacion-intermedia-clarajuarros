@@ -9,17 +9,21 @@
 </head>
 
 <body>
+  <header>
+    <h1>Adivina el número</h1>
 
-  <h1>Adivina el número</h1>
-  <h2>
-    introduce aqui tú número
-  </h2>
-  <form action="">
-    <input type="text" name="numero" class="numero">
-    <br><input type="submit" value="Prueba" class="btnPrueba">
-    <br> <input type="text" value="Pista: Escribe el número y dale a prueba" name="Pista" class="Pista" disabled>
-    <br><input type="text" value="Número de intentos: " name="numeroRespuestas" class="numeroRespuestas" disabled>
-  </form>
+  </header>
+  <main>
+    <form>
+      <input type="text" name="number" id="number" class="js_playerNumber" placeholder="Escribe aquí tu número" />
+      <label for="number"></label>
+      <button type="submit" class="js_submit">Prueba</button>
+    </form>
+    <p>
+      Pista: <span class="js_clue"> Escribe el número y dale a Prueba </span>
+    </p>
+    <p>Número de intentos: <span class="js_try"> 0 </span></p>
+  </main>
   <script type="text/javascript" src="../docs/assets/js/main.js"></script>
 </body>
 
